@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018181933) do
+ActiveRecord::Schema.define(version: 20141018185259) do
 
   create_table "key_columns", force: true do |t|
     t.string   "name"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20141018181933) do
   end
 
   add_index "key_rows", ["spreadsheetdoc_id"], name: "index_key_rows_on_spreadsheetdoc_id"
+
+  create_table "plans", force: true do |t|
+    t.integer  "price"
+    t.string   "name"
+    t.integer  "length"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.integer  "user_id"
@@ -68,8 +76,10 @@ ActiveRecord::Schema.define(version: 20141018181933) do
     t.string   "product_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "plan_id"
   end
 
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "users", force: true do |t|

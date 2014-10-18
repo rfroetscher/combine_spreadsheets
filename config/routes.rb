@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "spreadsheetdocs#new"
+
   devise_for :users
   resources :projects do 
     collection {get :reorder}
@@ -9,7 +10,9 @@ Rails.application.routes.draw do
   resources :project_steps do
     collection { post :sort}
   end
+
   resources :spreadsheetdocs
+  resources :subscriptions, except: [:destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

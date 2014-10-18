@@ -1,0 +1,18 @@
+%h1= "Signing up for @subscription.plan.name"
+%p= "Includes <strong><%= @subscription.plan.kisses %> llama kisses</strong> for only <strong><%= number_to_currency @subscription.plan.price %></strong> per month!</p>"
+
+= form_for @subscription do |f|
+  - if @subscription.errors.any?
+    .error_messages
+      %h2= "pluralize(@subscription.errors.count, error) prohibited this subscription from being saved:"
+      %ul
+      - @subscription.errors.full_messages.each do |msg|
+        %li= msg
+
+  = "f.hidden_field :plan_id"
+
+  .field
+    = f.label :product_name
+    = f.text_field :product_name
+  .actions
+    = f.submit "Subscribe"
