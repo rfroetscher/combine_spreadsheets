@@ -49,13 +49,11 @@
         .col-lg-9
           = yield
         .col-lg-3
-          %h3 Sidebar Example
+          %h3 Combine Spreadsheets
           .well.sidebar-nav
             %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to 'Link 1', '/path1'
-              %li= link_to 'Link 2', '/path2'
-              %li= link_to 'Link 3', '/path3'
+              %li= link_to 'New Spreadsheet', new_spreadsheetdoc_path, class: "btn btn-default btn-lg"
+              %li= link_to 'New Project', new_project_path, class: "btn btn-default btn-lg"
     %footer
       .container
         %p &copy; Combine Spreadsheets 2014

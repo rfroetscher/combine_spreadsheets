@@ -7,7 +7,6 @@ $ ->
 	  estring = "#" + element
 
 	  $(estring).sortable 
-	  	axis: "x",
 	  	update: ->
 	    	$.post($(this).data('update-url'), $(this).sortable('serialize'))
 

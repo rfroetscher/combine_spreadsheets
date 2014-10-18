@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
 
   def get_spreadsheet(id)
     spreadsheet = Spreadsheetdoc.find(id)
-    @spreadsheet_object = Roo::Excelx.new(spreadsheet.spreadsheetfile.url)
+    @spreadsheet_object = Roo::Spreadsheet.open(spreadsheet.spreadsheetfile.url)
   end
 
   def get_first_row(id)
@@ -46,7 +46,7 @@ class Project < ActiveRecord::Base
     spreadsheets = project.spreadsheetdocs
     combined_table = []
     spreadsheets.each_with_index do |spreadsheet, index|
-      old_file = Roo::Excelx.new(spreadsheet.spreadsheetfile.url)
+      old_file = Roo::Spreadsheet.open(spreadsheet.spreadsheetfile.url)
       table = []
       spreadsheet_index = index
       kc = spreadsheet.key_columns.sort_by {|kc| kc.order }

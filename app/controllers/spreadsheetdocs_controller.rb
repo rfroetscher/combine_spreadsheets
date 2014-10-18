@@ -9,7 +9,7 @@ class SpreadsheetdocsController < ApplicationController
     @spreadsheet = Spreadsheetdoc.new(spreadsheet_params)
     @spreadsheet.user_id = current_user.id
     @spreadsheet.save!
-    redirect_to projects_path
+    redirect_to spreadsheetdocs_path
   end
 
   def edit
