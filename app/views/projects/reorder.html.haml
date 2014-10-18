@@ -1,0 +1,19 @@
+%title "New Project"
+
+= form_tag @project do
+	%h1 Reorder your spreadsheet columns
+	- @project.spreadsheetdocs.each do |spreadsheet|
+		.spreadsheet.row
+			%h3= spreadsheet.name
+			%ul{id: "key_column_handle_#{spreadsheet.id}", class: "sortclass", :"data-update-url" => sort_projects_url }
+				- spreadsheet.key_rows.each do |row|
+					- @row1 = row.key_columns
+					- @sorted_row = @row1.sort_by {|row| row.order}
+					- @sorted_row.each do |r|
+						= content_tag_for :li, r, class: "label label-primary" do 
+							= r.name
+	.row.btnholder
+		%p= link_to "Combine your spreadsheets!", combine_projects_path(project_id: @project.id), class: "btn btn-success btn-lg"
+		%p= submit_tag "Back", :name => "back_button"
+
+= link_to "Back to List", new_project_path 

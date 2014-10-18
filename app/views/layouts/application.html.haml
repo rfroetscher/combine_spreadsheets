@@ -1,0 +1,61 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title Combine Spreadsheets
+    = stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track' => true
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container-fluid#navholder
+      %nav.navbar.navbar-default{role: 'navigation'}
+        // Brand and toggle get grouped for better mobile display
+        %div.navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to image_tag("shared/cs_logo.png", class: 'logo'), root_url, class: 'navbar-brand'
+
+        // Collect the nav links, forms, and other content for toggling
+        %div.collapse.navbar-collapse.navbar-ex1-collapse#cs_navbar
+          %ul.nav.navbar-nav
+            %li#test
+              = link_to 'My Spreadsheets', spreadsheetdocs_path
+            %li
+              = link_to 'My Projects', projects_path
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              - if user_signed_in?
+                %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+                  = "Signed in as #{current_user.email}"
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to 'Edit Profile', edit_user_registration_path
+                  %li
+                    = link_to('Logout', destroy_user_session_path, :method => :delete)
+              - else
+                %li
+                  = link_to 'Sign In',  new_user_session_path
+                %li
+                  = link_to 'Sign Up', new_user_registration_path
+
+    .container
+      .row
+        .col-lg-9
+          = yield
+        .col-lg-3
+          %h3 Sidebar Example
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Sidebar
+              %li= link_to 'Link 1', '/path1'
+              %li= link_to 'Link 2', '/path2'
+              %li= link_to 'Link 3', '/path3'
+    %footer
+      .container
+        %p &copy; Combine Spreadsheets 2014

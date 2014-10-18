@@ -1,0 +1,9 @@
+%h1 Reorder your spreadsheet columns
+%table
+	%th Field
+	%th Order
+	- @rows.each do |row|
+		%tr
+			- row.each do |r|
+				%td= r
+				%td= text_field :"spreadsheet#{@rows.index(row)}" , :"order#{row.index(r)}"

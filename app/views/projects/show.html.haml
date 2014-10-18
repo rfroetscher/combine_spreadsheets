@@ -1,0 +1,10 @@
+%h1= @project.name
+- @project.spreadsheetdocs.each do |spreadsheet|
+	%h4= spreadsheet.name
+	%table
+		-spreadsheet.key_rows.each do |kr|
+			%tr
+				- kr_ordered = kr.key_columns.sort_by {|row| row.order}
+				- kr_ordered.each do |kc|
+					%td= kc.name
+%h4= link_to "Download combined spreadsheet", @project.combinedfile.url

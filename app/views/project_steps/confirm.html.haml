@@ -1,0 +1,16 @@
+%title= @project.title
+
+= form_tag @project do
+	#header
+	%h2 Select the spreadsheets you'd like to combine:
+
+	#spreadsheets
+		%ul
+			- @spreadsheets.each do |spreadsheet|
+				%li
+					= label_tag spreadsheet.name
+					= check_box_tag 'spreadsheet_ids[]', spreadsheet.id
+	%p= submit_tag "Continue"
+	%p= submit_tag "Back", :name => "back_button" unless @project.first_step?
+
+= link_to "Back to List", new_project_path 

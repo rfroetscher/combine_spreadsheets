@@ -1,0 +1,12 @@
+.col-md-6
+	%h2 Upload a spreadsheet
+	= form_for @spreadsheet, class: "form-horizontal" do |f|
+		.form-group
+			= f.label :name
+			= f.text_field :name, class: "form-control"
+		.form-group
+			= f.label :spreadsheetfile
+			%span{class: "btn btn-default btn-file", id: "cfile"}
+				%p Choose a file
+				= f.file_field :spreadsheetfile 
+		= f.submit class: "btn btn-primary", id: "sfile"

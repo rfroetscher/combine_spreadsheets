@@ -1,0 +1,13 @@
+.row.well.topbtn
+	%h3 To get started, upload some spreadsheets
+	%h2= link_to "Upload a spreadsheet", new_spreadsheetdoc_path, class: "btn btn-success btn-lg newp"
+.row
+	%h3 Your spreadsheets:
+	- @spreadsheets.each do |spreadsheet|
+		.project
+			%h2= link_to spreadsheet.name, spreadsheetdoc_path(spreadsheet.id)
+			.table.table-responsive
+				%table.table-striped
+					%tr
+					- spreadsheet.key_columns.each do |kc|
+						%td= kc.name

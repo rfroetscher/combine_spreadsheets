@@ -1,0 +1,9 @@
+#header
+%h2 Select the spreadsheets you'd like to combine:
+
+#spreadsheets
+	%ul
+		- @spreadsheets.each do |spreadsheet|
+			%li
+				= label_tag spreadsheet.name
+				= check_box_tag 'spreadsheet_ids[]', spreadsheet.id
