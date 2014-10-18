@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008034936) do
+ActiveRecord::Schema.define(version: 20141018181933) do
 
   create_table "key_columns", force: true do |t|
     t.string   "name"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 20141008034936) do
   end
 
   add_index "spreadsheetdocs", ["user_id"], name: "user_id_ix"
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.date     "active_until"
+    t.boolean  "active"
+    t.boolean  "recurring"
+    t.string   "product_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
