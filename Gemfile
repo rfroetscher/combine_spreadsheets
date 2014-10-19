@@ -51,6 +51,7 @@ gem "jquery-ui-rails"
 
 gem "stripe"
 
+gem 'jquery-turbolinks'
 
 
 # Use ActiveModel has_secure_password

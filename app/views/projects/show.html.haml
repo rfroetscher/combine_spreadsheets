@@ -1,10 +1,20 @@
 %h1= @project.name
-- @project.spreadsheetdocs.each do |spreadsheet|
-	%h4= spreadsheet.name
-	%table
-		-spreadsheet.key_rows.each do |kr|
-			%tr
-				- kr_ordered = kr.key_columns.sort_by {|row| row.order}
-				- kr_ordered.each do |kc|
-					%td= kc.name
-%h4= link_to "Download combined spreadsheet", @project.combinedfile.url
+.spreadsheet-holder.well
+	.row
+		.col-md-12
+			- @project.key_rows.each do |key_row|
+				%h4= "From #{key_row.spreadsheetdoc.name}:"
+				%table.table-responsive.table.table-bordered
+					%tr
+						- sorted = key_row.key_columns.sort_by {|row| row.order}
+						- sorted.each do |kc|
+							%td= kc.name
+	.row
+		.col-md-4
+			%h4.text-left= link_to "Redorder Project Columns", reorder_projects_path(project_id: @project.id)
+		.col-md-2
+			%h4.text-left= link_to "Edit Project", "#"
+		.col-md-6
+			%h4.text-left= link_to "Delete Project", "#"
+
+%h4= link_to "Download combined spreadsheet", @project.combinedfile.url, class: "btn btn-success btn-lg"
