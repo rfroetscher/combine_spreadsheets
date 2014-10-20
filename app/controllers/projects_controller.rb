@@ -62,6 +62,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+  end
+
   def index
     @projects = current_user.projects
   end
