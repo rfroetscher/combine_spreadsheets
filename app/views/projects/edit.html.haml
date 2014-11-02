@@ -1,21 +1,21 @@
-= form_tag @project do
+= form_for @project do |f|
 	#header
 	%h2 New combination
 	%h3 Project name
-	= text_field_tag :name
+	= f.text_field :name
 
 	%h3 Select the spreadsheets you'd like to combine:
-
+	
 	#spreadsheets
 		%table
-			- @project.spreadsheetdocs.each do |spreadsheet|
+			- current_user.spreadsheetdocs.each do |spreadsheet|
 				%tr
 					%td
-						= check_box_tag 'spreadsheet_ids[]', spreadsheet.id
+						= check_box_tag 'spreadsheet_ids[]', spreadsheet.id, @project.spreadsheetdocs.ids.include?(spreadsheet.id)
 					%td
 						= label_tag spreadsheet.name
 	#skiprows
-		= check_box_tag :skip_multiple	
+		= check_box_tag :skip_multiple, @project.skip_multiple, @project.skip_multiple
 		= label_tag "Skip header rows after the first?"			
 	%p= submit_tag "Continue"
 	%p= submit_tag "Back", :name => "back_button"

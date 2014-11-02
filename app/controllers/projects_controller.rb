@@ -67,6 +67,14 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:id])
+    @project.name = params[:name]
+    @project.user = current_user
+    @project.skip_multiple = params[:skip_multiple]
+    @project.spreadsheetdocs.clear
+    params[:spreadsheet_ids].each do |e|
+      @project.spreadsheetdocs << Spreadsheetdoc.find(e)
+    end
   end
 
   def index
