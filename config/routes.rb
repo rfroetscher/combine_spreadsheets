@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: "spreadsheetdocs#new"
+  root to: "home_pages#show"
+
+  resource :home_page, only: [:show]
 
   devise_for :users
   resources :projects do 

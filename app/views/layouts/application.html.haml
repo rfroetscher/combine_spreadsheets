@@ -43,18 +43,8 @@
                   = link_to 'Sign In',  new_user_session_path
                 %li
                   = link_to 'Sign Up', new_user_registration_path
+    = yield
 
-    .container
-      .row
-        .col-lg-9
-          = yield
-        - if user_signed_in?
-          .col-lg-3
-            %h3 Combine Spreadsheets
-            .well.sidebar-nav
-              %ul.nav.nav-list
-                %li= link_to 'New Spreadsheet', new_spreadsheetdoc_path, class: "btn btn-default btn-lg"
-                %li= link_to 'New Project', new_project_path, class: "btn btn-default btn-lg"
     %footer
       .container
         %p &copy; Combine Spreadsheets 2014
