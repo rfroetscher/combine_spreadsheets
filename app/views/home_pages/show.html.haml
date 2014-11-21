@@ -6,8 +6,8 @@
 				.col-md-12
 					#textarea
 						%h1 Combine Spreadsheets
-						%h2 easily online
-			.row
+						%h2.light easily online
+			.row.upper-space
 				.col-md-4
 					= image_tag "home_page/multiple_spreadsheets.png", class: 'multiple'
 				.col-md-4
@@ -15,23 +15,35 @@
 				.col-md-4
 					= image_tag "home_page/single_spreadsheet.png", class: 'single'
 			.row
-				.col-md-12
-					.btnholder
-						= link_to new_spreadsheetdoc_path, class: 'btn btn-success btn-home' do
-							Start Now
-							%span.glyphicon.glyphicon-arrow-right
+				.col-md-12.text-center
+					= link_to new_spreadsheetdoc_path, class: 'btn btn-success btn-home' do
+						Start Now
+						%span.glyphicon.glyphicon-arrow-right
 	%section#reorder
 		.triangle-down.white
 		.container
 			.row
-				.col-md-6
+				.col-md-6.text-center
 					%h2 Quickly reorder columns
 				.col-md-6
 					= image_tag "home_page/trade_show_a_contacts.png", class: 'show-a'
 					= image_tag "home_page/trade_show_b_contacts.png", class: 'show-b'
 			.row
-				.col-md-12
-					.btnholder
-						= link_to new_spreadsheetdoc_path, class: 'btn btn-success btn-home' do
-							Start Now
-							%span.glyphicon.glyphicon-arrow-right
+				.col-md-12.text-center
+					= link_to new_spreadsheetdoc_path, class: 'btn btn-success btn-home' do
+						Start Now
+						%span.glyphicon.glyphicon-arrow-right
+	%section#format
+		.triangle-down.grey
+		.container
+			.row
+				.col-md-6
+					= image_tag "home_page/format_bubbles.png", class: 'bubbles'
+				.col-md-6.text-center
+					%h2 Upload any format
+					%h3 Excel, Excelx, OpenOffice, Google Spreadsheets
+			.row
+				.col-md-12.text-center
+					= link_to new_spreadsheetdoc_path, class: 'btn btn-success btn-home' do
+						Start Now
+						%span.glyphicon.glyphicon-arrow-right
