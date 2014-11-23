@@ -10,6 +10,8 @@
 h1, h2, h3, h4 ,h5, p, a
 	font-family: 'Muli', sans-serif
  
+html, body
+	height: 100%
 .logo
 	max-height: 45px
 .navbar
@@ -35,6 +37,15 @@ h1, h2, h3, h4 ,h5, p, a
 		margin-bottom: 15px
 		&:last-child
 			margin-bottom: 0px 
+.page-wrap
+	margin-bottom: -200px
+	min-height: 100%
+
+.page-wrap:after
+	content: ""
+	display: block
+	height: 200px
+
 footer
 	background-color: #eeeeee
 	height: 200px
