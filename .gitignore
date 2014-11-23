@@ -22,3 +22,5 @@
 /config/initializers/carrierwave.rb
 
 /config/initializers/stripe.rb
+
+.DS_Store
