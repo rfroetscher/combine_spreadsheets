@@ -1,23 +1,32 @@
-= form_for @project do |f|
-	#header
-	%h2 New combination
-	%h3 Project name
-	= f.text_field :name
+.project
+	.container
+		.col-md-6.col-md-offset-3
+			= form_for @project do |f|
+				#header
+				%h2 New combination
+				.form-group
+					%h3 Project name
+					= f.text_field :name, class: "form-control"
 
-	%h3 Select the spreadsheets you'd like to combine:
-	
-	#spreadsheets
-		%table
-			- current_user.spreadsheetdocs.each do |spreadsheet|
-				%tr
-					%td
-						= check_box_tag 'spreadsheet_ids[]', spreadsheet.id, @project.spreadsheetdocs.ids.include?(spreadsheet.id)
-					%td
-						= label_tag spreadsheet.name
-	#skiprows
-		= check_box_tag :skip_multiple, @project.skip_multiple, @project.skip_multiple
-		= label_tag "Skip header rows after the first?"			
-	%p= submit_tag "Continue"
-	%p= submit_tag "Back", :name => "back_button"
+				%h3 Select the spreadsheets you'd like to combine:
 
-= link_to "Back to List", new_project_path 
+				#spreadsheets
+					%table
+						- @spreadsheets.each do |spreadsheet|
+							%tr
+								%td
+									= check_box_tag 'spreadsheet_ids[]', spreadsheet.id, @project.spreadsheetdocs.ids.include?(spreadsheet.id)
+								%td
+									%p
+										&nbsp;
+										= spreadsheet.name
+				#skiprows
+					%h3 Skip header rows?
+					%table
+						%tr
+							%td
+								= check_box_tag :skip_multiple, @project.skip_multiple, @project.skip_multiple
+							%td
+								%h4 When my spreadsheets are combined, please remove header rows after the first
+				%p= submit_tag "Continue", class: "btn btn-primary"
+				%p= link_to "Back", new_project_path, name: "back_button", class: "btn btn-primary"

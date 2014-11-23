@@ -8,11 +8,20 @@ class SpreadsheetdocsController < ApplicationController
   def create
     @spreadsheet = Spreadsheetdoc.new(spreadsheet_params)
     @spreadsheet.user_id = current_user.id
-    @spreadsheet.save!
-    redirect_to spreadsheetdocs_path
+    if @spreadsheet.save
+      redirect_to spreadsheetdocs_path
+    else
+      flash[:alert] = "There was a problem saving your spreadsheet:"
+      @spreadsheet.errors.full_messages.each do |error|
+        flash[:alert] << " \u2022 #{error}"
+      end
+      render 'edit'
+      flash[:alert] = nil
+    end
   end
 
   def edit
+    @spreadsheet = Spreadsheetdoc.find(params[:id])
   end
 
   def update

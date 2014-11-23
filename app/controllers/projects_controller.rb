@@ -64,6 +64,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @spreadsheets = current_user.spreadsheetdocs
   end
 
   def update

@@ -4,4 +4,6 @@ class Spreadsheetdoc < ActiveRecord::Base
   belongs_to :user
   has_many :key_rows
   has_many :key_columns, through: :key_rows
+  validates :name, presence: true
+  validates_presence_of :spreadsheetfile
 end
