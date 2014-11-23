@@ -1,6 +1,6 @@
 .container
 	.row
-		.col-md-6
+		.col-md-4.col-md-offset-4
 			%h2 Upload a spreadsheet
 			= form_for @spreadsheet, class: "form-horizontal" do |f|
 				.form-group
@@ -11,4 +11,4 @@
 					%span{class: "btn btn-default btn-file", id: "cfile"}
 						%p Choose a file
 						= f.file_field :spreadsheetfile 
-				= f.submit class: "btn btn-primary", id: "sfile"
+				= f.submit "Upload Spreadsheet", class: "btn btn-primary", id: "sfile"
