@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "home_pages#show"
+  root to: "home_page#show"
 
   resource :home_page, only: [:show]
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     collection { post :sort}
   end
 
-  resources :spreadsheetdocs
+  resources :spreadsheetdocs, except: [:edit, :update]
   resources :subscriptions, except: [:destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.

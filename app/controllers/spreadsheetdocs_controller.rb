@@ -13,18 +13,11 @@ class SpreadsheetdocsController < ApplicationController
     else
       flash[:alert] = "There was a problem saving your spreadsheet:"
       @spreadsheet.errors.full_messages.each do |error|
-        flash[:alert] << " \u2022 #{error}"
+      flash[:alert] << " \u2022 #{error}"
       end
       render 'edit'
       flash[:alert] = nil
     end
-  end
-
-  def edit
-    @spreadsheet = Spreadsheetdoc.find(params[:id])
-  end
-
-  def update
   end
 
   def destroy
@@ -36,7 +29,9 @@ class SpreadsheetdocsController < ApplicationController
 
   def show
   end
+
   private
+
   def spreadsheet_params
     params.require(:spreadsheetdoc).permit(:name, :spreadsheetfile)
   end
