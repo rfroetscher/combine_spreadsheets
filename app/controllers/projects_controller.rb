@@ -69,12 +69,22 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.name = params[:name]
+    @project.name = params[:project][:name]
     @project.user = current_user
     @project.skip_multiple = params[:skip_multiple]
     @project.spreadsheetdocs.clear
     params[:spreadsheet_ids].each do |e|
       @project.spreadsheetdocs << Spreadsheetdoc.find(e)
+    end
+    if @project.save
+      redirect_to projects_path
+    else
+      flash[:alert] = "There was a problem saving your project:"
+      @project.errors.full_messages.each do |error|
+        flash[:alert] << " \u2022 #{error}"
+      end
+      render 'edit'
+      flash[:alert] = nil
     end
   end
 

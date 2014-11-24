@@ -1,0 +1,7 @@
+development:
+  access_key_id: <%= ENV["AWS_PUBLIC"] %>
+  secret_access_key: <%= ENV["AWS_PRIVATE"] %>
+
+production:
+  access_key_id: <%= ENV["AWS_PUBLIC"] %>
+  secret_access_key: <%= ENV["AWS_PRIVATE"] %>

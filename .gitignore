@@ -15,8 +15,6 @@
 /log/*.log
 /tmp
 
-/config/aws.yml
-
 /config/secrets.yml
 
 /config/initializers/carrierwave.rb
@@ -24,3 +22,7 @@
 /config/initializers/stripe.rb
 
 .DS_Store
+
+.env
+
+Procfile
