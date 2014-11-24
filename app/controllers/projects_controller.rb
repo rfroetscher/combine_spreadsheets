@@ -93,6 +93,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    Project.destroy(params[:id])
+    Project.delete(params[:id])
+    flash[:notice] = "Project successfully deleted!"
+    redirect_to projects_path
   end
 end

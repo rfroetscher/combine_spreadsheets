@@ -17,4 +17,4 @@
 					.col-md-2
 						%h4.text-left= link_to "Edit Project", edit_project_path(project.id)
 					.col-md-6
-						%h4.text-left= link_to 'Delete Project', spreadsheetdoc_path(project.id), method: :delete, data: { confirm: 'Are you sure?' }
+						%h4.text-left= link_to 'Delete Project', project_path(project.id), method: :delete, data: { confirm: 'Are you sure?' }
