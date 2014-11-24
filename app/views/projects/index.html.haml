@@ -2,19 +2,20 @@
 	.row.well.topbtn
 		%h3 To combine spreadsheets, start a new project
 		%h2= link_to "Start a New Project", new_project_path, class: "btn btn-success btn-lg newp"
-	.row
-		%h3 Your projects:
-		- @projects.each do |project|
-			.project.well
-				%h2= link_to project.name, project_path(project.id)
-				%table.table-responsive.table.table-bordered.table-striped
-					- project.spreadsheetdocs.each do |spreadsheet|
-						%tr.table-hover
-							%td=spreadsheet.name
-				.row
-					.col-md-4
-						%h4.text-left= link_to "Redorder Project Columns", reorder_projects_url(project_id: project.id)
-					.col-md-2
-						%h4.text-left= link_to "Edit Project", edit_project_path(project.id)
-					.col-md-6
-						%h4.text-left= link_to 'Delete Project', project_path(project.id), method: :delete, data: { confirm: 'Are you sure?' }
+	- if @projects.any?
+		.row
+			%h3 Your projects:
+			- @projects.each do |project|
+				.project.well
+					%h2= link_to project.name, project_path(project.id)
+					%table.table-responsive.table.table-bordered.table-striped
+						- project.spreadsheetdocs.each do |spreadsheet|
+							%tr.table-hover
+								%td=spreadsheet.name
+					.row
+						.col-md-4
+							%h4.text-left= link_to "Redorder Project Columns", reorder_projects_url(project_id: project.id)
+						.col-md-2
+							%h4.text-left= link_to "Edit Project", edit_project_path(project.id)
+						.col-md-6
+							%h4.text-left= link_to 'Delete Project', project_path(project.id), method: :delete, data: { confirm: 'Are you sure?' }
