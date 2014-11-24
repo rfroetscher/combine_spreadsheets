@@ -93,5 +93,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    Project.destroy(params[:id])
   end
 end
