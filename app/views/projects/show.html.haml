@@ -14,8 +14,8 @@
 			.col-md-4
 				%h4.text-left= link_to "Redorder Project Columns", reorder_projects_path(project_id: @project.id)
 			.col-md-2
-				%h4.text-left= link_to "Edit Project", "#"
+				%h4.text-left= link_to "Edit Project", edit_project_path(@project.id)
 			.col-md-6
-				%h4.text-left= link_to "Delete Project", "#"
+				%h4.text-left= link_to 'Delete Project', project_path(@project.id), method: :delete, data: { confirm: 'Are you sure?' }
 
 	%h4= link_to "Download combined spreadsheet", @project.combinedfile.url, class: "btn btn-success btn-lg"
