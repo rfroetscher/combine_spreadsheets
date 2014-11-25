@@ -3,6 +3,14 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :spreadsheetdocs
   has_many :key_rows, through: :spreadsheetdocs
   mount_uploader :combinedfile, CombinedfileUploader
+  validates :name, presence: true
+  validate :has_more_than_one_spreadsheetdoc
+
+  def has_more_than_one_spreadsheetdoc
+    if self.spreadsheetdocs.length < 2
+      errors.add(:base, "You must add more than one spreadsheet")
+    end
+  end
 
   def get_spreadsheet(id)
     spreadsheet = Spreadsheetdoc.find(id)

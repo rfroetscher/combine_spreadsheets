@@ -18,6 +18,14 @@ class ProjectsController < ApplicationController
     end
     if @project.save
       redirect_to reorder_projects_path(project_id: @project.id)
+    else
+      @spreadsheets = current_user.spreadsheetdocs
+      flash[:alert] = "There was a problem saving your project:"
+      @project.errors.full_messages.each do |error|
+        flash[:alert] << " \u2022 #{error}"
+      end
+      render 'edit'
+      flash[:alert] = nil
     end
   end
 

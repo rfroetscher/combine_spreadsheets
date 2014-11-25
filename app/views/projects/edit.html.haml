@@ -15,7 +15,7 @@
 						- @spreadsheets.each do |spreadsheet|
 							%tr
 								%td
-									= check_box_tag 'spreadsheet_ids[]', spreadsheet.id, @project.spreadsheetdocs.ids.include?(spreadsheet.id)
+									= check_box_tag 'spreadsheet_ids[]', spreadsheet.id, @project.spreadsheetdocs.include?(spreadsheet)
 								%td
 									%p
 										&nbsp;
