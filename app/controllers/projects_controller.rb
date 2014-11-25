@@ -16,26 +16,7 @@ class ProjectsController < ApplicationController
     params[:spreadsheet_ids].each do |e|
       @project.spreadsheetdocs << Spreadsheetdoc.find(e)
     end
-
-    @project.spreadsheetdocs.each do |spreadsheet|
-      if @project.first_row_doesnt_exist?(spreadsheet.id)
-        columns = @project.get_first_row(spreadsheet.id)
-        y = KeyRow.new
-        y.name = "first"
-        y.spreadsheetdoc = spreadsheet
-        y.save!
-
-        columns.each_with_index do |column, index|
-          z = KeyColumn.new
-          z.key_row_id = y.id
-          z.name = column
-          z.originalorder = index
-          z.order = index
-          z.save!
-        end
-      end
-    end
-    if @project.save!
+    if @project.save
       redirect_to reorder_projects_path(project_id: @project.id)
     end
   end

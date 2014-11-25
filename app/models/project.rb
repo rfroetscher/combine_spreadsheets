@@ -9,23 +9,6 @@ class Project < ActiveRecord::Base
     @spreadsheet_object = Roo::Spreadsheet.open(spreadsheet.spreadsheetfile.url)
   end
 
-  def get_first_row(id)
-    get_spreadsheet(id)
-    @spreadsheet_object.row(1)
-  end
-
-  def first_row_doesnt_exist?(spreadsheet_id)
-    spreadsheet = Spreadsheetdoc.find(spreadsheet_id)
-    spreadsheet.key_rows.each do |e|
-      if e.name == "first"
-        false
-        break
-      else
-        true
-      end
-    end
-  end
-
   def upload_project_spreadsheet(project_id)
     project = Project.find(project_id)
   end

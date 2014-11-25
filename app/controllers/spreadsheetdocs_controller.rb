@@ -9,6 +9,7 @@ class SpreadsheetdocsController < ApplicationController
     @spreadsheet = Spreadsheetdoc.new(spreadsheet_params)
     @spreadsheet.user_id = current_user.id
     if @spreadsheet.save
+      @spreadsheet.build_rows_and_columns
       redirect_to spreadsheetdocs_path
     else
       flash[:alert] = "There was a problem saving your spreadsheet:"
