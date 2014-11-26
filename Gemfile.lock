@@ -218,8 +218,6 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
-    wicked (1.1.0)
-      rails (>= 3.0.7)
 
 PLATFORMS
   ruby
@@ -251,4 +249,3 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
-  wicked

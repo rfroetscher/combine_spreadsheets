@@ -15,7 +15,6 @@ gem 'roo'
 gem "fog"
 gem "carrierwave"
 gem "haml-rails"
-gem "wicked"
 gem "jquery-ui-rails"
 gem "stripe"
 gem 'jquery-turbolinks'

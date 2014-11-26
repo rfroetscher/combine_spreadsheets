@@ -9,9 +9,6 @@ Rails.application.routes.draw do
     collection { post :sort}
     collection { get :combine}
   end
-  resources :project_steps do
-    collection { post :sort}
-  end
 
   resources :spreadsheetdocs, except: [:edit, :update]
   resources :subscriptions, except: [:destroy]
