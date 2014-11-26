@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :spreadsheetdocs, except: [:edit, :update]
-  resources :subscriptions, except: [:destroy]
+  #resources :subscriptions, except: [:destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
