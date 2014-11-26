@@ -29,9 +29,42 @@
           = render "devise/shared/links"
 
     %section#overview
-      .triangle-down.white
+      .triangle-down.white  
       .container
         .row
           .col-md-12
             %h1.text-center.light How combine spreadsheets works
+        .row
+          .col-md-8.col-md-offset-2
+            .col-md-6
+              %h3.text-center.light Upload the spreadsheets you'd like to combine
+            .col-md-6
+              = image_tag "devise/registrations/small_spreadsheets.png", class: 'center-block'
+        .row
+          .col-md-2.col-md-offset-5
+            = image_tag "devise/registrations/arrow_down.gif", class: "center-block arrow"
+        .row
+          .col-md-8.col-md-offset-2
+            .col-md-6
+              %h3.text-center.light Start a project to combine any of your spreadsheets
+            .col-md-6
+              = image_tag "devise/registrations/select_spreadsheets.png", class: 'center-block'
+        .row
+          .col-md-2.col-md-offset-5
+            = image_tag "devise/registrations/arrow_down.gif", class: "center-block arrow"
+        .row
+          .col-md-8.col-md-offset-2
+            .col-md-6
+              %h3.text-center.light Reorder spreadsheet columns so they match
+            .col-md-6
+              = image_tag "devise/registrations/reorder_columns.png", class: 'center-block'
+        .row
+          .col-md-2.col-md-offset-5
+            = image_tag "devise/registrations/arrow_down.gif", class: "center-block arrow"
+        .row
+          .col-md-8.col-md-offset-2
+            .col-md-6
+              %h3.text-center.light Easily download your combined spreadsheet
+            .col-md-6
+              = image_tag "devise/registrations/finished_spreadsheet.png", class: 'center-block'
 
