@@ -44,6 +44,8 @@ gem "stripe"
 
 gem 'jquery-turbolinks'
 
+gem 'unicorn'
+
 group :development do
 
 	gem 'spring'
