@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     collection { get :combine}
   end
 
-  resources :spreadsheetdocs, except: [:edit, :update]
+  resources :spreadsheetdocs, except: [:edit, :update, :show]
   #resources :subscriptions, except: [:destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.

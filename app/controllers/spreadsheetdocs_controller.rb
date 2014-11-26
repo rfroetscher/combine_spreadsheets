@@ -37,9 +37,6 @@ class SpreadsheetdocsController < ApplicationController
     @spreadsheets = current_user.spreadsheetdocs
   end
 
-  def show
-  end
-
   private
 
   def spreadsheet_params
