@@ -6,5 +6,5 @@
 		= f.label :spreadsheetfile
 		%span{class: "btn btn-default btn-file", id: "cfile"}
 			%p Choose a file
-			= f.file_field :spreadsheetfile
+			= f.file_field :spreadsheetfile, multiple: true, name: 'spreadsheetdoc[spreadsheetfile]'
 	= f.submit "Upload Spreadsheet", class: "btn btn-primary", id: "sfile"

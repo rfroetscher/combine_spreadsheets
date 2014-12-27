@@ -19,13 +19,18 @@ gem "jquery-ui-rails"
 gem "stripe"
 gem 'jquery-turbolinks'
 gem 'unicorn'
+gem "jquery-fileupload-rails"
 
 group :development do
 
 	gem 'spring'
 	gem 'pry'
 	gem 'pry-rails'
+	gem 'pry-remote'
+	gem 'pry-stack_explorer'
+	gem 'byebug'
 	gem "better_errors"
+	gem 'dotenv-rails'
 
 end
 

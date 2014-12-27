@@ -4,8 +4,13 @@ class Spreadsheetdoc < ActiveRecord::Base
   belongs_to :user
   has_many :key_rows
   has_many :key_columns, through: :key_rows
-  validates :name, presence: true
+  before_create :default_name
   validates_presence_of :spreadsheetfile
+  
+
+  def default_name
+    self.name = File.basename(spreadsheetfile.filename, '.*').titleize if spreadsheetfile
+  end
 
   def build_key_first_row
   	key_first_row = KeyRow.create(name: 'first', spreadsheetdoc: self)
