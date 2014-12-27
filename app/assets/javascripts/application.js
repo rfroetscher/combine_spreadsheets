@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require turbolinks

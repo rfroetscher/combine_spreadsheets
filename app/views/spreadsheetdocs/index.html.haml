@@ -1,28 +1,32 @@
-.container	
-	- if @spreadsheets.count <= 2
+.container  
+	- if @spreadsheets.count <= 1
 		.row.well.topbtn
-			%h3 To get started, upload some spreadsheets
-			%h2= link_to "Upload a spreadsheet", new_spreadsheetdoc_path, class: "btn btn-success btn-lg newp"
+			= render 'form'
 	- else
 		.row.well.topbtn
 			.col-md-6
-				%h3 To get started, upload some spreadsheets
-				%h2= link_to "Upload a spreadsheet", new_spreadsheetdoc_path, class: "btn btn-success btn-lg newp"
+				= render 'form'
 			.col-md-6
 				%h3 Or to combine spreadsheets, start a new project
 				%h2= link_to "Start a new project", new_project_path, class: "btn btn-success btn-lg newp"
-	- if @spreadsheets.any?	
+	- if @spreadsheets.any? 
 		.row
 			%h3 Your spreadsheets:
-			- @spreadsheets.each do |spreadsheet|
-				.spreadsheet-holder.well
-					.col-md-6
-						%h3.text-left= spreadsheet.name
-					.col-md-6.down
-						%h4.text-right= link_to 'Delete Spreadsheet', spreadsheetdoc_path(spreadsheet.id), method: :delete, data: { confirm: 'Are you sure?' }
+			#spreadsheets
+				- @spreadsheets.each do |spreadsheet|
+					.spreadsheet-holder.well
+						.col-md-6
+							%h3.text-left= spreadsheet.name
+						.col-md-6.down
+							%h4.text-right= link_to 'Delete Spreadsheet', spreadsheetdoc_path(spreadsheet.id), method: :delete, data: { confirm: 'Are you sure?' }
 
-					.table
-						%table.table-responsive.table.table-bordered
-							%tr
-							- spreadsheet.key_columns.each do |kc|
-								%td= kc.name
+						.table
+							%table.table-responsive.table.table-bordered
+								%tr
+								- spreadsheet.key_columns.each do |kc|
+									%td= kc.name
+%script#template-upload{:type => "text/x-tmpl"}
+	.upload
+		{%=o.name%}
+		.progress
+			.bar{:style => "width: 0%"}

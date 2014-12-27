@@ -1,0 +1,5 @@
+<% if @spreadsheet.new_record? %>
+  alert("<%= j @spreadsheet.custom_errors %>");
+<% else %>
+  $("#spreadsheets").prepend("<%= j render(@spreadsheet) %>");
+<% end %>

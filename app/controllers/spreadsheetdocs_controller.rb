@@ -10,14 +10,11 @@ class SpreadsheetdocsController < ApplicationController
     @spreadsheet.user_id = current_user.id
     if @spreadsheet.save
       @spreadsheet.build_rows_and_columns
-      redirect_to spreadsheetdocs_path
     else
-      flash[:alert] = "There was a problem saving your spreadsheet:"
+      @spreadsheet.custom_errors = "There was a problem saving your spreadsheet:"
       @spreadsheet.errors.full_messages.each do |error|
-      flash[:alert] << " \u2022 #{error}"
+      @spreadsheet.custom_errors << " \u2022 #{error}"
       end
-      render 'edit'
-      flash[:alert] = nil
     end
   end
 
