@@ -10,7 +10,7 @@ $ ->
 		  file = data.files[0]
 		  if types.test(file.type) || types.test(file.name)
 		    data.context = $(tmpl("template-upload", file))
-		    $('#new_spreadsheetdoc').append(data.context)
+		    (data.context).insertAfter($('.topbtn'))
 		    data.submit()
 		  else
 		    alert("#{file.name} is not a xls, xlsx, ods, or csv file")
