@@ -10,10 +10,11 @@ class SpreadsheetdocsController < ApplicationController
     @spreadsheet.user_id = current_user.id
     if @spreadsheet.save
       @spreadsheet.build_rows_and_columns
+      flash[:notice] = "Spreadsheet successfully added!"
     else
-      @spreadsheet.custom_errors = "There was a problem saving your spreadsheet:"
+      flash[:alert] = "There was a problem saving your spreadsheet:"
       @spreadsheet.errors.full_messages.each do |error|
-      @spreadsheet.custom_errors << " \u2022 #{error}"
+      flash[:alert] << " \u2022 #{error}"
       end
     end
   end

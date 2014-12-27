@@ -1,10 +1,6 @@
 = form_for Spreadsheetdoc.new, class: "form-horizontal" do |f|
-	.form-group
-		= f.label :name
-		= f.text_field :name, class: "form-control"
-	.form-group
-		= f.label :spreadsheetfile
+	.form-group#spreadsheet-upload
+		%h3 Drag and drop here to upload spreadsheets
 		%span{class: "btn btn-default btn-file", id: "cfile"}
-			%p Choose a file
+			%p Or choose a file
 			= f.file_field :spreadsheetfile, multiple: true, name: 'spreadsheetdoc[spreadsheetfile]'
-	= f.submit "Upload Spreadsheet", class: "btn btn-primary", id: "sfile"

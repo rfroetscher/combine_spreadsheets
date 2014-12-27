@@ -1,5 +1,4 @@
-<% if @spreadsheet.new_record? %>
-  alert("<%= j @spreadsheet.custom_errors %>");
-<% else %>
-  $("#spreadsheets").prepend("<%= j render(@spreadsheet) %>");
-<% end %>
+$("#spreadsheets").prepend("<%= j render(@spreadsheet) %>");
+$(".alert").remove();
+$(".page-wrap").prepend("<%= j render(partial: 'layouts/messages') %>");
+$(".alert").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
